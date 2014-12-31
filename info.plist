@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>2FBE4D78-C472-497D-8E50-0B819E65119C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FD58018C-DC39-4396-A00F-A04372220916</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>7706C2E3-FDE6-47E3-8183-F82260F183F5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DECEFF4A-75E8-4C33-856B-883CC6671213</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>DE2F4384-DA0F-426A-B194-5C459EC781E7</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>B1A653DB-6DB8-4408-BCF4-AD9D869FF6CA</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>TomerO</string>
+	<key>description</key>
+	<string>Server snippets</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>ServSnips</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>?ip</string>
+				<key>script</key>
+				<string>python ServSnip.py {query}</string>
+				<key>title</key>
+				<string>find-ip</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>2FBE4D78-C472-497D-8E50-0B819E65119C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<true/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>FD58018C-DC39-4396-A00F-A04372220916</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>?ip-clear</string>
+				<key>subtext</key>
+				<string>clears the cache</string>
+				<key>text</key>
+				<string>clear ip cache</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>DE2F4384-DA0F-426A-B194-5C459EC781E7</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>python ServSnipClear.py</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>B1A653DB-6DB8-4408-BCF4-AD9D869FF6CA</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>?ip-install</string>
+				<key>script</key>
+				<string>import argparse
+from workflow import Workflow
+import sys
+import os
+
+def main(wf):
+    try:
+        username,password = "{query}".split()
+    except:
+        wf.add_item("Usage: sl-install username password")
+        wf.send_feedback()
+        return None
+
+    wf.add_item("{query}", arg="{query}", valid=True)
+    wf.send_feedback()
+
+if __name__ == u"__main__":
+    wf = Workflow()
+    sys.exit(wf.run(main))</string>
+				<key>subtext</key>
+				<string>?ip-install username password</string>
+				<key>title</key>
+				<string>install ServSnips</string>
+				<key>type</key>
+				<integer>3</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>7706C2E3-FDE6-47E3-8183-F82260F183F5</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>98</integer>
+				<key>script</key>
+				<string>import argparse
+from workflow import Workflow
+import sys
+import os
+
+def main(wf):
+    username,password = "{query}".split()
+
+    wf.cache_data("ServSnips_username", username)
+    wf.cache_data("ServSnips_password", password)
+
+if __name__ == u"__main__":
+    wf = Workflow()
+    sys.exit(wf.run(main))</string>
+				<key>type</key>
+				<integer>3</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>DECEFF4A-75E8-4C33-856B-883CC6671213</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>2FBE4D78-C472-497D-8E50-0B819E65119C</key>
+		<dict>
+			<key>ypos</key>
+			<real>60</real>
+		</dict>
+		<key>7706C2E3-FDE6-47E3-8183-F82260F183F5</key>
+		<dict>
+			<key>ypos</key>
+			<real>300</real>
+		</dict>
+		<key>B1A653DB-6DB8-4408-BCF4-AD9D869FF6CA</key>
+		<dict>
+			<key>ypos</key>
+			<real>180</real>
+		</dict>
+		<key>DE2F4384-DA0F-426A-B194-5C459EC781E7</key>
+		<dict>
+			<key>ypos</key>
+			<real>180</real>
+		</dict>
+		<key>DECEFF4A-75E8-4C33-856B-883CC6671213</key>
+		<dict>
+			<key>ypos</key>
+			<real>300</real>
+		</dict>
+		<key>FD58018C-DC39-4396-A00F-A04372220916</key>
+		<dict>
+			<key>ypos</key>
+			<real>60</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
